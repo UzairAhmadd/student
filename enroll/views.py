@@ -14,6 +14,7 @@ def add_show(request):
       reg = User(name=nm, email=em, password=pw)
       reg.save()
      fm =StudentRegistration()
+ 
     else:
      fm =StudentRegistration()
     stud= User.objects.all()
@@ -27,6 +28,7 @@ def update_data(request ,id):
     fm= StudentRegistration(request.POST,instance=pi)
     if fm.is_valid():
      fm.save()
+  
 
   else:
       pi=User.objects.get(pk=id)
