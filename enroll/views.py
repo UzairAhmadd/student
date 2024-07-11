@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import StudentRegistration
 from .models import User
+from django.shortcuts import HttpResponse
 # Create your views here.
 
 # this funtion will add new items
@@ -41,3 +42,16 @@ def delete_data(request,id):
     pi = User.objects.get(pk=id)
     pi.delete()
     return HttpResponseRedirect('/')
+  
+
+def filter(request):
+   stud= User.objects.all()
+   if request.method=='POST':
+     st=request.Post.get("")
+     if st!=None:
+        stud= User.objects.filter(name=st)
+   data={
+     'stud':stud
+
+    }
+   return render(request,'addandshow.html',data)

@@ -9,6 +9,11 @@
             {%csrf_token%}
             {{form.as_p}}
             <input type="submit" class="btn btn-success" value="Add">
+            <a href="{% url 'filter' %}" class="btn btn-warning">Filter</a>
+            
+           
+
+          
         </form>
     </div>
     <div class="col-sm-7 offset-1">
@@ -32,11 +37,12 @@
                 <td>{{st.email}}</td>
                 <td>{{st.password}}</td>
                 <td>
-                    <a href="{% url 'updatedata' st.id %}" class="btn btn-warning btn-sm ">Edit</a>
-                   
+                 
+                   <a href="{% url 'updatedata' st.id %}" class="btn btn-warning">Edit</a>
                     <form action="{% url 'deletedata' st.id%}" method="post" class="d-inline">{%csrf_token%}
                         <input type="submit" class ="btn btn-danger" value="Delete">
                     </form>
+                    
                 </td>
               </tr>
               {% endfor %}
